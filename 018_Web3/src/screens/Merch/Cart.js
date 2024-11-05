@@ -257,6 +257,10 @@ const Cart = ({ cartNum, setCartNum }) => {
   );
 
   const hasSufficientBalance = useMemo(() => {
+    // Unless balance is loaded we think it's insufficient,
+    // this could be done in a more relaxed way and be vice versa
+    if (balance === null) return false;
+
     return balance >= totalPrice;
   }, [balance, totalPrice]);
 
